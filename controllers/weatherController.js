@@ -9,10 +9,9 @@ exports.getWeather = async (req, res) => {
     const response = await axios.get(url);
     const weatherData = response.data;
 
-    // استخراج توقعات الطقس لليومين القادمين
     const dailyForecasts = weatherData.list
       .filter((item) => item.dt_txt.endsWith("12:00:00")) // نحصل على توقعات منتصف النهار
-      .slice(0, 7) // احصل على يومين
+      .slice(0, 20)
       .map((item) => ({
         temperature: item.main.temp,
         description: item.weather[0].description,

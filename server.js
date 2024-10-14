@@ -6,8 +6,14 @@ const app = express();
 // الاتصال بقاعدة البيانات
 connectDB();
 
-// Middleware
-app.use(cors());
+// CORS configuration
+const corsOptions = {
+  origin: "https://trip-seven-zeta.vercel.app", // Your Vercel frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+  credentials: true, // Enable credentials (cookies, authorization headers)
+};
+
+app.use(cors(corsOptions)); // Apply the CORS middleware with options
 app.use(express.json());
 
 // المسارات
